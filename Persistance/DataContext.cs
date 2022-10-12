@@ -11,6 +11,7 @@ namespace Persistance
     {
         public DataContext(DbContextOptions options) : base(options)
         {
+            //test
         }
 
         public DbSet<Activity> Activities { get; set; } 
