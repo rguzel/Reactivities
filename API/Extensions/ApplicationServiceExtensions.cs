@@ -16,7 +16,7 @@ namespace API.Extensions
     public static class ApplicationServiceExtensions
     {
         public static IServiceCollection AddAplicationServices(this IServiceCollection services,IConfiguration config){
-            
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
@@ -29,14 +29,15 @@ namespace API.Extensions
             {
                 opt.AddPolicy("CorsPolicy",policy=>
                 {
-                    policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+                    // policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+                    policy.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
                 });
             });
             services.AddMediatR(typeof(ListR.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
-            
+
             return services;
-            
+
         }
     }
 }
